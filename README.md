@@ -13,3 +13,12 @@
 > Format itu adalah URL connection string untuk menghubungkan ke server AMQP, yaitu guest pertama adalah username dan guest kedua adalah password. Jadi ini artinya kita login ke server AMQP menggunakan username: guest dan password: guest. Dan localhost berarti kita menjalankan itu di lingkungan lokal.
 
 </details>
+
+<details>
+<summary>Screen shot of simulation slow subscriber.</summary>
+
+> ![Alt text](<Screenshot 2025-05-08 at 20.27.34.png>)
+
+> Bisa dilihat, baris thread::sleep(ten_millis); menyuruh program pause selama ten_millis, yang isinya 1000 milidetik = 1 detik. Artinya, setiap kali subscriber menerima satu event dari publisher, dia pause 1 detik sebelum lanjut print pesan.
+
+</details>
