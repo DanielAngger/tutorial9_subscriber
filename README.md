@@ -22,3 +22,13 @@
 > Bisa dilihat, baris thread::sleep(ten_millis); menyuruh program pause selama ten_millis, yang isinya 1000 milidetik = 1 detik. Artinya, setiap kali subscriber menerima satu event dari publisher, dia pause 1 detik sebelum lanjut print pesan.
 
 </details>
+
+<details>
+<summary>Screen shot of running at least three subscribers.</summary>
+
+> ![Alt text](<Screenshot 2025-05-08 at 21.41.38.png>)
+> ![Alt text](<Screenshot 2025-05-08 at 21.41.58.png>)
+
+> Bisa dilihat, masing-masing subscriber mendapat pesan yang berbeda karena RabbitMQ memang load balancing antar subscriber yang bind ke queue yang sama. Jadi, 1 pesan yang dikirim publisher hanya diambil oleh 1 subscriber saja, tidak semuanya. Hal ini karena arsitektur RabbitMQ dengan queue itu seperti memiliki alur publisher -> mengirim pesan -> masuk ke queue. Kalau punya 3 subscriber yang listen ke queue yang sama (misal queue user_created), maka RabbitMQ akan distribusikan secara bergantian (round-robin) ke subscriber-subscriber itu. Jadi setiap pesan cuma dikasih ke 1 subscriber, bukan ke semuanya sekaligus.
+
+</details>
